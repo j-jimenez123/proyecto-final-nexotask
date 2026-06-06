@@ -3,8 +3,11 @@ import Database from "better-sqlite3";
 import fs from "node:fs";
 import path from "node:path";
 import * as schema from "./schema";
+import { initDatabase } from "./init";
 
-const dbPath = process.env.DATABASE_URL || "data/nexotask.db";
+const dbPath =
+  process.env.DATABASE_URL ||
+  (process.env.VERCEL ? "/tmp/nexotask.db" : "data/nexotask.db");
 const dir = path.dirname(dbPath);
 
 if (dir && dir !== ".") {
@@ -12,6 +15,7 @@ if (dir && dir !== ".") {
 }
 
 const sqlite = new Database(dbPath);
+initDatabase(sqlite);
 
 export const db = drizzle(sqlite, { schema });
 export { sqlite };
