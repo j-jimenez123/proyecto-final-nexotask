@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
-import styles from "./page.module.css";
+import TaskBoard from "./TaskBoard";
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -13,14 +13,11 @@ export default async function DashboardPage() {
   }
 
   return (
-    <main className={styles.page}>
-      <section className={styles.header}>
-        <div>
-          <p>NexoTask</p>
-          <h1>Hola, {session.user.name}</h1>
-          <span>{session.user.email}</span>
-        </div>
-      </section>
-    </main>
+    <TaskBoard
+      user={{
+        name: session.user.name,
+        email: session.user.email,
+      }}
+    />
   );
 }
