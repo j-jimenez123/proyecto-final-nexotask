@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "./page.module.css";
 
 const filtros = ["todas", "pendientes", "completadas"];
 
-export default function TaskBoard({ user }) {
-  const [tasks, setTasks] = useState([]);
-  const [quote, setQuote] = useState(null);
+export default function TaskBoard({ user, initialTasks, initialQuote }) {
+  const [tasks, setTasks] = useState(initialTasks);
+  const [quote] = useState(initialQuote);
   const [filter, setFilter] = useState("todas");
   const [mensaje, setMensaje] = useState("");
   const [form, setForm] = useState({
@@ -26,17 +26,6 @@ export default function TaskBoard({ user }) {
 
     setTasks(await response.json());
   }
-
-  async function cargarFrase() {
-    const response = await fetch("/api/quote");
-    const data = await response.json();
-    setQuote(data);
-  }
-
-  useEffect(() => {
-    cargarTareas();
-    cargarFrase();
-  }, []);
 
   const resumen = useMemo(() => {
     const total = tasks.length;
@@ -109,7 +98,7 @@ export default function TaskBoard({ user }) {
 
         <div className={styles.quote}>
           <strong>Frase del dia</strong>
-          <p>{quote?.quote || "Cargando frase..."}</p>
+          <p>{quote?.quote || "Frase no disponible."}</p>
           {quote?.author && <span>{quote.author}</span>}
         </div>
 
