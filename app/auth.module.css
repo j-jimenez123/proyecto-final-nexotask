@@ -1,0 +1,66 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.panel {
+  width: min(430px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 16px 40px rgba(23, 32, 51, 0.08);
+}
+
+.back {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.panel h1 {
+  margin: 24px 0 8px;
+}
+
+.panel p {
+  color: var(--muted);
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.form label {
+  font-weight: 700;
+}
+
+.form input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 11px;
+}
+
+.form button {
+  margin-top: 8px;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.message {
+  background: #eef2ff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.small a {
+  color: var(--primary);
+  font-weight: 700;
+}
