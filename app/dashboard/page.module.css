@@ -652,9 +652,9 @@
 .closedBanner {
   min-height: calc(100vh - 345px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 310px);
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
   align-items: center;
-  gap: 28px;
+  gap: clamp(20px, 4vw, 54px);
   border-radius: 24px;
   padding: 42px;
   color: #fff;
@@ -701,6 +701,7 @@
   justify-items: start;
   gap: 14px;
   text-align: left;
+  max-width: 620px;
 }
 
 .closedIcon {
@@ -718,7 +719,7 @@
 .closedBanner h3 {
   margin: 10px 0 0;
   color: #fff;
-  font-size: clamp(52px, 7vw, 92px);
+  font-size: clamp(46px, 5.6vw, 78px);
   line-height: 0.88;
   text-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
 }
@@ -726,7 +727,7 @@
 .closedBanner strong {
   display: block;
   color: #fff7ed;
-  font-size: clamp(38px, 4.7vw, 68px);
+  font-size: clamp(34px, 4.2vw, 58px);
   line-height: 0.96;
   text-shadow: 0 14px 34px rgba(15, 23, 42, 0.18);
 }
@@ -765,6 +766,8 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   min-width: 0;
+  width: min(100%, 330px);
+  justify-self: end;
 }
 
 .closedWidget {
@@ -1563,6 +1566,20 @@ select:disabled {
   .formFull {
     min-height: auto;
   }
+
+  .closedBanner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .closedContent {
+    max-width: 720px;
+  }
+
+  .closedWidgets {
+    width: min(100%, 520px);
+    justify-self: start;
+  }
 }
 
 @media (max-width: 1020px) {
@@ -1653,13 +1670,17 @@ select:disabled {
   }
 
   .closedBanner {
-    grid-template-columns: 1fr;
     min-height: 520px;
   }
 
   .closedContent {
     justify-items: center;
     text-align: center;
+    max-width: none;
+  }
+
+  .closedWidgets {
+    justify-self: center;
   }
 
 }
