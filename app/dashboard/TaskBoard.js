@@ -740,7 +740,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
                     >
                       <option value="fecha">Ordenar por fecha</option>
                       <option value="prioridad">Ordenar por prioridad</option>
-                      <option value="recientes">Mas recientes</option>
+                      <option value="recientes">Más recientes</option>
                     </select>
                     <button
                       className={styles.clean}
@@ -1215,7 +1215,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
             </div>
 
             <section className={styles.templateCard}>
-              <h2>Plantillas rapidas</h2>
+              <h2>Plantillas rápidas</h2>
               <button onClick={() => usarPlantilla("entrega")} type="button">
                 + Entrega
               </button>

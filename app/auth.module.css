@@ -44,6 +44,32 @@
 .loginPanel {
   align-self: center;
   z-index: 4;
+  overflow: hidden;
+}
+
+.loginPanel::before {
+  content: "NexoTask";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: linear-gradient(90deg, #f97316, #ec4899, #7c3aed, #2563eb);
+}
+
+.loginPanel::after {
+  content: "";
+  position: absolute;
+  right: -46px;
+  top: 74px;
+  width: 130px;
+  height: 130px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.78) 0 28%, transparent 30%),
+    linear-gradient(135deg, rgba(249, 115, 22, 0.28), rgba(236, 72, 153, 0.22));
+  pointer-events: none;
+  z-index: -1;
 }
 
 .back {
@@ -137,6 +163,7 @@
   margin: 26px 0 8px;
   font-size: 34px;
   color: #0f172a;
+  letter-spacing: 0;
 }
 
 .panel p {
@@ -158,7 +185,9 @@
   border: 1px solid #cbd5e1;
   border-radius: 15px;
   padding: 13px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.94);
+  color: #0f172a;
+  font-weight: 750;
 }
 
 .form input:focus {
@@ -215,6 +244,8 @@
   border: 1px solid #fbcfe8;
   border-radius: 13px;
   padding: 11px;
+  color: #831843;
+  font-weight: 850;
 }
 
 .small a {
@@ -804,9 +835,9 @@
 
 @media (max-width: 1320px) {
   .loginVisual {
-    opacity: 0.42;
+    opacity: 0.74;
     right: 18px;
-    width: 360px;
+    width: 340px;
   }
 
   .phraseStack {
@@ -816,12 +847,52 @@
 
 @media (max-width: 1080px) {
   .loginPage {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    gap: 18px;
+    padding-top: 118px;
   }
 
   .loginVisual {
-    display: none;
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: min(460px, 100%);
+    opacity: 1;
+    order: 3;
+    pointer-events: none;
+  }
+
+  .videoCard {
+    min-height: 210px;
+  }
+
+  .taskMovie {
+    min-height: 132px;
+    margin-top: 14px;
+  }
+
+  .movieTask {
+    width: min(330px, 92%);
+    padding: 10px;
+  }
+
+  .movieTaskOne {
+    top: 0;
+  }
+
+  .movieTaskTwo {
+    top: 54px;
+  }
+
+  .movieTaskThree {
+    top: 108px;
+  }
+
+  .progressBlock {
+    margin-top: 8px;
   }
 
   .loginDecor,
@@ -845,7 +916,7 @@
   }
 
   .videoCard {
-    min-height: 430px;
+    min-height: 0;
     border-radius: 24px;
   }
 
@@ -861,12 +932,12 @@
     margin-top: 24px;
   }
 
-  .phraseStack {
+  .progressBlock {
     grid-template-columns: 1fr;
   }
 
-  .phraseStack p {
-    min-height: auto;
+  .phraseStack {
+    display: none;
   }
 }
 

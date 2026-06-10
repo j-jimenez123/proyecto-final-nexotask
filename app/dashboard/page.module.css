@@ -652,9 +652,9 @@
 .closedBanner {
   min-height: calc(100vh - 345px);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
-  align-items: center;
-  gap: clamp(20px, 4vw, 54px);
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 24px;
   border-radius: 24px;
   padding: 42px;
   color: #fff;
@@ -766,8 +766,8 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   min-width: 0;
-  width: min(100%, 330px);
-  justify-self: end;
+  width: min(100%, 520px);
+  justify-self: start;
 }
 
 .closedWidget {
@@ -1567,18 +1567,8 @@ select:disabled {
     min-height: auto;
   }
 
-  .closedBanner {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
   .closedContent {
     max-width: 720px;
-  }
-
-  .closedWidgets {
-    width: min(100%, 520px);
-    justify-self: start;
   }
 }
 
