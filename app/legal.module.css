@@ -1,0 +1,140 @@
+.page {
+  min-height: 100vh;
+  padding: 28px;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(249, 115, 22, 0.38), transparent 25%),
+    radial-gradient(circle at 78% 12%, rgba(236, 72, 153, 0.32), transparent 26%),
+    linear-gradient(135deg, #111827, #312e81 55%, #7c2d12);
+}
+
+.hero,
+.layout {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  color: #fff;
+  padding: 30px;
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.94), rgba(236, 72, 153, 0.88), rgba(249, 115, 22, 0.86)),
+    #7c3aed;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.30);
+  animation: appear 0.45s ease both;
+}
+
+.back {
+  display: inline-block;
+  color: #fff7ed;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+.hero p {
+  margin: 0 0 8px;
+  color: #ffedd5;
+  font-weight: 900;
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 46px;
+}
+
+.hero span {
+  color: #f8fafc;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.index,
+.panel {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 26px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(16px);
+}
+
+.index {
+  height: fit-content;
+  position: sticky;
+  top: 22px;
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  animation: appear 0.5s ease both;
+}
+
+.index strong {
+  margin-bottom: 6px;
+}
+
+.index a {
+  color: #475569;
+  border-radius: 12px;
+  padding: 9px 10px;
+  text-decoration: none;
+}
+
+.index a:hover {
+  background: #fdf2f8;
+  color: #be185d;
+}
+
+.panel {
+  padding: 24px;
+  animation: appear 0.55s ease both;
+}
+
+.panel article {
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  background: #fff;
+}
+
+.panel article + article {
+  margin-top: 14px;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+}
+
+.panel p {
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 820px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .index {
+    position: static;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}

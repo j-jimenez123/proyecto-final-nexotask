@@ -32,14 +32,78 @@ export default function LoginPage() {
     router.refresh();
   }
 
+  const frases = [
+    "Divide el dia en tareas pequenas.",
+    "Primero lo importante, despues lo urgente.",
+    "Una tarea terminada vale mas que diez apuntadas.",
+  ];
+
+  const logros = [
+    "Objetivo desbloqueado",
+    "Entrega lista",
+    "Dia bien organizado",
+    "Constancia antes que prisa",
+  ];
+
   return (
-    <main className={styles.page}>
-      <section className={styles.panel}>
-        <Link href="/" className={styles.back}>
-          NexoTask
+    <main className={`${styles.page} ${styles.loginPage}`}>
+      <header className={styles.loginHeader}>
+        <Link href="/" className={styles.loginLogo}>
+          <span>N</span>
+          <strong>NEXO TASK</strong>
+          <small>organiza tu dia</small>
         </Link>
+      </header>
+
+      <section className={styles.loginDecor} aria-hidden="true">
+        <div className={`${styles.floatScene} ${styles.calendarScene}`}>
+          <span className={styles.sceneLabel}>Semana</span>
+          <div className={styles.calendarGrid}>
+            <span>L</span>
+            <span>M</span>
+            <span>X</span>
+            <span>J</span>
+            <span>V</span>
+            <strong>8</strong>
+            <strong>9</strong>
+            <strong>10</strong>
+            <strong>11</strong>
+            <strong>12</strong>
+          </div>
+        </div>
+
+        <div className={`${styles.floatScene} ${styles.focusScene}`}>
+          <span className={styles.sceneLabel}>Focus</span>
+          <strong>25:00</strong>
+          <p>modo concentracion</p>
+        </div>
+
+        <div className={`${styles.floatScene} ${styles.successScene}`}>
+          <span className={styles.donePulse}>OK</span>
+          <div>
+            <strong>3 tareas hechas</strong>
+            <p>vas pillando ritmo</p>
+          </div>
+        </div>
+
+        <div className={`${styles.floatScene} ${styles.priorityScene}`}>
+          <span>Alta</span>
+          <span>Media</span>
+          <span>Baja</span>
+        </div>
+      </section>
+
+      <section className={styles.successPhrases} aria-hidden="true">
+        {logros.map((logro, index) => (
+          <span key={logro} style={{ "--phrase-delay": `${index * 1.1}s` }}>
+            {logro}
+          </span>
+        ))}
+      </section>
+
+      <section className={`${styles.panel} ${styles.loginPanel}`}>
         <h1>Iniciar sesion</h1>
-        <p>Entra para ver tus tareas y el panel privado.</p>
+        <p>Entra y deja preparado lo que toca hacer hoy.</p>
 
         <form className={styles.form} onSubmit={entrar}>
           <label htmlFor="email">Email</label>
@@ -67,6 +131,59 @@ export default function LoginPage() {
         <p className={styles.small}>
           No tengo cuenta: <Link href="/registro">registrarme</Link>
         </p>
+      </section>
+
+      <section className={styles.loginVisual} aria-label="Vista previa de NexoTask">
+        <div className={styles.videoCard}>
+          <div className={styles.videoTop}>
+            <span />
+            <span />
+            <span />
+            <strong>Plan de hoy</strong>
+          </div>
+
+          <div className={styles.taskMovie}>
+            <div className={`${styles.movieTask} ${styles.movieTaskOne}`}>
+              <span className={styles.checkCircle}>OK</span>
+              <div>
+                <strong>Repasar proyecto final</strong>
+                <p>09:30 - prioridad alta</p>
+              </div>
+            </div>
+            <div className={`${styles.movieTask} ${styles.movieTaskTwo}`}>
+              <span className={styles.timePill}>11:00</span>
+              <div>
+                <strong>Subir cambios a GitHub</strong>
+                <p>README, commits y pruebas</p>
+              </div>
+            </div>
+            <div className={`${styles.movieTask} ${styles.movieTaskThree}`}>
+              <span className={styles.spark}>+</span>
+              <div>
+                <strong>Nueva tarea guardada</strong>
+                <p>Sin perder lo que ya esta hecho</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.progressBlock}>
+            <div>
+              <strong>68%</strong>
+              <p>avance del dia</p>
+            </div>
+            <span className={styles.progressLine}>
+              <span />
+            </span>
+          </div>
+        </div>
+
+        <div className={styles.phraseStack}>
+          {frases.map((frase, index) => (
+            <p key={frase} style={{ "--delay": `${index * 0.35}s` }}>
+              {frase}
+            </p>
+          ))}
+        </div>
       </section>
     </main>
   );

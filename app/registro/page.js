@@ -10,10 +10,17 @@ export default function RegistroPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [privacy, setPrivacy] = useState(false);
   const [mensaje, setMensaje] = useState("");
 
   async function registrar(event) {
     event.preventDefault();
+
+    if (!privacy) {
+      setMensaje("Tienes que aceptar la politica de privacidad.");
+      return;
+    }
+
     setMensaje("Creando cuenta...");
 
     const respuesta = await fetch("/api/auth/sign-up/email", {
@@ -69,6 +76,22 @@ export default function RegistroPage() {
             onChange={(event) => setPassword(event.target.value)}
             required
           />
+
+          <label className={styles.checkbox}>
+            <input
+              checked={privacy}
+              onChange={(event) => setPrivacy(event.target.checked)}
+              required
+              type="checkbox"
+            />
+            <span>
+              He leido y acepto la{" "}
+              <Link href="/privacidad" rel="noopener noreferrer" target="_blank">
+                politica de privacidad
+              </Link>
+              .
+            </span>
+          </label>
 
           <button type="submit">Registrarme</button>
         </form>
