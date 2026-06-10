@@ -48,7 +48,7 @@
 }
 
 .loginPanel::before {
-  content: "NexoTask";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -282,6 +282,7 @@
   backdrop-filter: blur(16px);
   color: #111827;
   animation: sceneFloat 7s ease-in-out infinite;
+  z-index: 1;
 }
 
 .sceneLabel {
@@ -364,9 +365,9 @@
 }
 
 .successScene {
-  left: clamp(22px, 17vw, 300px);
+  left: clamp(18px, 15vw, 225px);
   top: 72%;
-  width: 235px;
+  width: 220px;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -427,11 +428,7 @@
 }
 
 .successPhrases {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
+  display: none;
 }
 
 .successPhrases span {
