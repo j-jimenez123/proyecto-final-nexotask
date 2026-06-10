@@ -12,7 +12,7 @@ const labels = {
 const viewLabels = {
   bandeja: "Bandeja",
   hoy: "Hoy",
-  proximas: "Proximas",
+  proximas: "Próximas",
   urgentes: "Urgentes",
   vencidas: "Vencidas",
   completadas: "Hechas",
@@ -232,7 +232,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
       : activeView === "urgentes"
         ? "No hay tareas urgentes ahora mismo. Buen momento para avanzar con calma."
         : activeView === "completadas"
-          ? "Todavia no hay tareas hechas en esta vista."
+          ? "Todavía no hay tareas hechas en esta vista."
           : search
             ? "No hay coincidencias con esa busqueda."
             : "No hay tareas en este filtro.";
@@ -277,7 +277,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
   const vistas = [
     { id: "bandeja", label: "Bandeja", symbol: "📥", count: resumen.total },
     { id: "hoy", label: "Hoy", symbol: "💡", count: resumen.hoy },
-    { id: "proximas", label: "Proximas", symbol: "📅", count: resumen.pendientes },
+    { id: "proximas", label: "Próximas", symbol: "📅", count: resumen.pendientes },
     { id: "urgentes", label: "Urgentes", symbol: "⚡", count: resumen.alta },
     { id: "vencidas", label: "Vencidas", symbol: "!", count: resumen.vencidas },
     { id: "completadas", label: "Hechas", symbol: "✅", count: resumen.completadas },
@@ -376,7 +376,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
   }
 
   async function borrarTarea(id) {
-    const confirmacion = window.confirm("Seguro que quieres borrar esta tarea?");
+    const confirmacion = window.confirm("¿Seguro que quieres borrar esta tarea?");
 
     if (!confirmacion) return;
 
@@ -488,7 +488,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
     setForm(plantilla[tipo]);
     setOpenPanel("crear");
     setTasksOpen(true);
-    setNotice("Plantilla preparada. Revisa los datos y guardala.");
+    setNotice("Plantilla preparada. Revisa los datos y guárdala.");
   }
 
   function moverMes(direction) {
@@ -602,7 +602,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
                 setTasksOpen(true);
                 setOpenPanel("tareas");
               }}
-              placeholder="Nombre o descripcion"
+              placeholder="Nombre o descripción"
             />
           </div>
 
@@ -637,7 +637,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
 
         <div className={styles.sideRhythm}>
           <span>🚀</span>
-          <strong>Ritmo del dia</strong>
+          <strong>Ritmo del día</strong>
           <p>
             {resumen.pendientes === 0
               ? "Todo controlado por ahora."
@@ -653,14 +653,14 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
         </div>
 
         <button className={styles.logout} onClick={cerrarSesion} type="button">
-          Cerrar sesion
+          Cerrar sesión
         </button>
       </aside>
 
       <main className={styles.content}>
         <section className={styles.hero}>
           <div className={styles.heroText}>
-            <p>Tu dia empieza con orden, {user.name}</p>
+            <p>Tu día empieza con orden, {user.name}</p>
             <div className={styles.heroProgressWrap}>
               <h1 className={styles.heroLogoText}>
                 <span className={styles.heroLogoMark}>N</span>
@@ -1172,7 +1172,7 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
               {siguiente ? (
                 <>
                   <h2>{siguiente.title}</h2>
-                  <p>{siguiente.description || "Sin descripcion."}</p>
+                  <p>{siguiente.description || "Sin descripción."}</p>
                   <div className={styles.focusMeta}>
                     <span>{formatDate(siguiente.dueDate)}</span>
                     {siguiente.dueTime && <span>{siguiente.dueTime}</span>}

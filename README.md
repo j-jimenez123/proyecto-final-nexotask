@@ -149,25 +149,9 @@ Me sirvió para ordenar mejor el trabajo y dividirlo en partes: primero la estru
 
 En la parte de backend lo usé para repasar la forma de plantear los endpoints de tareas y las validaciones básicas antes de guardar datos. También revisé cómo controlar que cada usuario solo pudiera acceder a sus propias tareas.
 
-En la documentación lo usé para comprobar que no faltaran apartados importantes: instalación, variables de entorno, comandos para arrancar, explicación de tecnologías, despliegue en Vercel y uso de IA.
+En la documentación lo usé para comprobar que no faltaran apartados importantes: instalación, variables de entorno, comandos para arrancar, explicación de tecnologías y despliegue en Vercel.
 
 Antes de dar el proyecto por terminado también lo usé como apoyo para preparar una lista de pruebas manuales: registro, inicio de sesión, cierre de sesión, creación de tareas, edición, borrado, filtros y protección del dashboard.
-
-### Revisión personal
-
-Durante el desarrollo fui comprobando manualmente que:
-
-- El registro y el login funcionaban correctamente.
-- El dashboard quedaba protegido.
-- Las tareas se podían crear, editar, completar y borrar.
-- Los datos se guardaban en la base de datos.
-- Las rutas de API respondían correctamente.
-- Los filtros del dashboard mostraban las tareas que correspondían.
-- El calendario mostraba las tareas en el día correcto.
-- El README no explicaba funcionalidades que no estuvieran hechas.
-- Los comandos de instalación y arranque funcionaban.
-
-Además, fui haciendo ajustes propios sobre nombres de rutas, textos de la interfaz, validaciones de tareas, estilos del dashboard y la forma de mostrar las tareas en el calendario.
 
 En resumen, ChatGPT me sirvió para resolver dudas concretas, revisar documentación y comprobar requisitos.
 

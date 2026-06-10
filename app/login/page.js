@@ -24,7 +24,7 @@ export default function LoginPage() {
     });
 
     if (!respuesta.ok) {
-      setMensaje("No se ha podido iniciar sesion.");
+      setMensaje("No se ha podido iniciar sesión.");
       return;
     }
 
@@ -33,15 +33,15 @@ export default function LoginPage() {
   }
 
   const frases = [
-    "Divide el dia en tareas pequenas.",
-    "Primero lo importante, despues lo urgente.",
-    "Una tarea terminada vale mas que diez apuntadas.",
+    "Divide el día en tareas pequeñas.",
+    "Primero lo importante, después lo urgente.",
+    "Una tarea terminada vale más que diez apuntadas.",
   ];
 
   const logros = [
     "Objetivo desbloqueado",
     "Entrega lista",
-    "Dia bien organizado",
+    "Día bien organizado",
     "Constancia antes que prisa",
   ];
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
         <Link href="/" className={styles.loginLogo}>
           <span>N</span>
           <strong>NEXO TASK</strong>
-          <small>organiza tu dia</small>
+          <small>organiza tu día</small>
         </Link>
       </header>
 
@@ -73,9 +73,9 @@ export default function LoginPage() {
         </div>
 
         <div className={`${styles.floatScene} ${styles.focusScene}`}>
-          <span className={styles.sceneLabel}>Focus</span>
+          <span className={styles.sceneLabel}>Enfoque</span>
           <strong>25:00</strong>
-          <p>modo concentracion</p>
+          <p>modo concentración</p>
         </div>
 
         <div className={`${styles.floatScene} ${styles.successScene}`}>
@@ -102,7 +102,7 @@ export default function LoginPage() {
       </section>
 
       <section className={`${styles.panel} ${styles.loginPanel}`}>
-        <h1>Iniciar sesion</h1>
+        <h1>Iniciar sesión</h1>
         <p>Entra y deja preparado lo que toca hacer hoy.</p>
 
         <form className={styles.form} onSubmit={entrar}>
@@ -115,7 +115,7 @@ export default function LoginPage() {
             required
           />
 
-          <label htmlFor="password">Contrasena</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             id="password"
             type="password"
@@ -161,7 +161,7 @@ export default function LoginPage() {
               <span className={styles.spark}>+</span>
               <div>
                 <strong>Nueva tarea guardada</strong>
-                <p>Sin perder lo que ya esta hecho</p>
+                <p>Sin perder lo que ya está hecho</p>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function LoginPage() {
           <div className={styles.progressBlock}>
             <div>
               <strong>68%</strong>
-              <p>avance del dia</p>
+              <p>avance del día</p>
             </div>
             <span className={styles.progressLine}>
               <span />

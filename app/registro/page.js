@@ -17,7 +17,7 @@ export default function RegistroPage() {
     event.preventDefault();
 
     if (!privacy) {
-      setMensaje("Tienes que aceptar la politica de privacidad.");
+      setMensaje("Tienes que aceptar la política de privacidad.");
       return;
     }
 
@@ -47,7 +47,7 @@ export default function RegistroPage() {
           NexoTask
         </Link>
         <h1>Crear cuenta</h1>
-        <p>Usa una contrasena de al menos 8 caracteres.</p>
+        <p>Usa una contraseña de al menos 8 caracteres.</p>
 
         <form className={styles.form} onSubmit={registrar}>
           <label htmlFor="name">Nombre</label>
@@ -67,7 +67,7 @@ export default function RegistroPage() {
             required
           />
 
-          <label htmlFor="password">Contrasena</label>
+          <label htmlFor="password">Contraseña</label>
           <input
             id="password"
             type="password"
@@ -85,9 +85,9 @@ export default function RegistroPage() {
               type="checkbox"
             />
             <span>
-              He leido y acepto la{" "}
+              He leído y acepto la{" "}
               <Link href="/privacidad" rel="noopener noreferrer" target="_blank">
-                politica de privacidad
+                política de privacidad
               </Link>
               .
             </span>

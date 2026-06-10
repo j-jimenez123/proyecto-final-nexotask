@@ -28,7 +28,7 @@ export async function PATCH(request, { params }) {
   const id = getId(await params);
 
   if (!id) {
-    return NextResponse.json({ error: "Id no valido" }, { status: 400 });
+    return NextResponse.json({ error: "Id no válido" }, { status: 400 });
   }
 
   let body;
@@ -36,7 +36,11 @@ export async function PATCH(request, { params }) {
   try {
     body = await request.json();
   } catch (error) {
-    return NextResponse.json({ error: "JSON no valido" }, { status: 400 });
+    return NextResponse.json({ error: "JSON no válido" }, { status: 400 });
+  }
+
+  if (!body || typeof body !== "object") {
+    return NextResponse.json({ error: "Datos no válidos" }, { status: 400 });
   }
 
   const changes = {
@@ -60,7 +64,7 @@ export async function PATCH(request, { params }) {
 
     if (!isValidDate(dueDate)) {
       return NextResponse.json(
-        { error: "La fecha no tiene un formato valido" },
+        { error: "La fecha no tiene un formato válido" },
         { status: 400 }
       );
     }
@@ -73,7 +77,7 @@ export async function PATCH(request, { params }) {
 
     if (!isValidTime(dueTime)) {
       return NextResponse.json(
-        { error: "La hora no tiene un formato valido" },
+        { error: "La hora no tiene un formato válido" },
         { status: 400 }
       );
     }
@@ -108,7 +112,7 @@ export async function DELETE(_request, { params }) {
   const id = getId(await params);
 
   if (!id) {
-    return NextResponse.json({ error: "Id no valido" }, { status: 400 });
+    return NextResponse.json({ error: "Id no válido" }, { status: 400 });
   }
 
   const result = await db

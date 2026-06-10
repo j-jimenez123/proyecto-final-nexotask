@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 
 const tareasDemo = [
   {
-    titulo: "Terminar practica de Next",
+    titulo: "Terminar práctica de Next",
     estado: "Pendiente",
     prioridad: "Alta",
   },
@@ -27,13 +27,13 @@ export default function Home() {
           <p className={styles.kicker}>Proyecto final 2 DAW</p>
           <h1>NexoTask</h1>
           <p>
-            Gestor de tareas para organizar entregas, practicas y trabajo del
+            Gestor de tareas para organizar entregas, prácticas y trabajo del
             curso desde un panel sencillo.
           </p>
           <div className={styles.actions}>
             <Link href="/dashboard">Entrar al panel</Link>
             <Link href="/login" className={styles.secondary}>
-              Iniciar sesion
+              Iniciar sesión
             </Link>
           </div>
         </div>

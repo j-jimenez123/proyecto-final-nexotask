@@ -35,7 +35,7 @@ export async function POST(request) {
   try {
     body = await request.json();
   } catch (error) {
-    return NextResponse.json({ error: "JSON no valido" }, { status: 400 });
+    return NextResponse.json({ error: "JSON no válido" }, { status: 400 });
   }
 
   const { task, error } = cleanTaskInput(body);
