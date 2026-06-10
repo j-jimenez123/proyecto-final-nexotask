@@ -3,10 +3,9 @@ import { NextResponse } from "next/server";
 import { db } from "../../../db";
 import { tasks } from "../../../db/schema";
 import { getCurrentUser } from "../../../lib/session";
+import { cleanTaskInput } from "../../../lib/taskRules";
 
 export const runtime = "nodejs";
-
-const prioridades = ["baja", "media", "alta"];
 
 export async function GET() {
   const user = await getCurrentUser();
@@ -31,14 +30,19 @@ export async function POST(request) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
 
-  const body = await request.json();
-  const title = String(body.title || "").trim();
-  const description = String(body.description || "").trim();
-  const priority = prioridades.includes(body.priority) ? body.priority : "media";
+  let body;
 
-  if (!title || title.length > 120) {
+  try {
+    body = await request.json();
+  } catch (error) {
+    return NextResponse.json({ error: "JSON no valido" }, { status: 400 });
+  }
+
+  const { task, error } = cleanTaskInput(body);
+
+  if (error) {
     return NextResponse.json(
-      { error: "El titulo es obligatorio" },
+      { error },
       { status: 400 }
     );
   }
@@ -47,9 +51,7 @@ export async function POST(request) {
   const result = await db
     .insert(tasks)
     .values({
-      title,
-      description,
-      priority,
+      ...task,
       completed: false,
       userId: user.id,
       createdAt: now,

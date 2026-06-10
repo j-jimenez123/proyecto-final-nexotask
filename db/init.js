@@ -5,12 +5,28 @@ export function initDatabase(sqlite) {
       title text NOT NULL,
       description text DEFAULT '',
       priority text DEFAULT 'media' NOT NULL,
+      due_date text DEFAULT '',
+      due_time text DEFAULT '',
       completed integer DEFAULT false NOT NULL,
       user_id text NOT NULL,
       created_at integer NOT NULL,
       updated_at integer NOT NULL
     );
+  `);
 
+  try {
+    sqlite.exec("ALTER TABLE tasks ADD COLUMN due_time text DEFAULT '';");
+  } catch (error) {
+    // La columna ya existe en bases que han sido migradas antes.
+  }
+
+  try {
+    sqlite.exec("ALTER TABLE tasks ADD COLUMN due_date text DEFAULT '';");
+  } catch (error) {
+    // La columna ya existe en bases que han sido migradas antes.
+  }
+
+  sqlite.exec(`
     CREATE TABLE IF NOT EXISTS user (
       id text NOT NULL PRIMARY KEY,
       name text NOT NULL,

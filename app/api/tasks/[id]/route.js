@@ -3,10 +3,15 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../db";
 import { tasks } from "../../../../db/schema";
 import { getCurrentUser } from "../../../../lib/session";
+import {
+  cleanPriority,
+  cleanText,
+  isValidDate,
+  isValidTime,
+  priorities,
+} from "../../../../lib/taskRules";
 
 export const runtime = "nodejs";
-
-const prioridades = ["baja", "media", "alta"];
 
 function getId(params) {
   const id = Number(params.id);
@@ -26,7 +31,14 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ error: "Id no valido" }, { status: 400 });
   }
 
-  const body = await request.json();
+  let body;
+
+  try {
+    body = await request.json();
+  } catch (error) {
+    return NextResponse.json({ error: "JSON no valido" }, { status: 400 });
+  }
+
   const changes = {
     updatedAt: new Date(),
   };
@@ -36,15 +48,41 @@ export async function PATCH(request, { params }) {
   }
 
   if (typeof body.title === "string" && body.title.trim()) {
-    changes.title = body.title.trim().slice(0, 120);
+    changes.title = cleanText(body.title, 120);
   }
 
   if (typeof body.description === "string") {
-    changes.description = body.description.trim();
+    changes.description = cleanText(body.description, 500);
   }
 
-  if (prioridades.includes(body.priority)) {
-    changes.priority = body.priority;
+  if (typeof body.dueDate === "string") {
+    const dueDate = cleanText(body.dueDate, 10);
+
+    if (!isValidDate(dueDate)) {
+      return NextResponse.json(
+        { error: "La fecha no tiene un formato valido" },
+        { status: 400 }
+      );
+    }
+
+    changes.dueDate = dueDate;
+  }
+
+  if (typeof body.dueTime === "string") {
+    const dueTime = cleanText(body.dueTime, 5);
+
+    if (!isValidTime(dueTime)) {
+      return NextResponse.json(
+        { error: "La hora no tiene un formato valido" },
+        { status: 400 }
+      );
+    }
+
+    changes.dueTime = dueTime;
+  }
+
+  if (priorities.includes(body.priority)) {
+    changes.priority = cleanPriority(body.priority);
   }
 
   const result = await db

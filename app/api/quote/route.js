@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { fallbackQuote, pickLocalQuote } from "../../../lib/quotes";
 
 export async function GET() {
   try {
@@ -12,14 +13,8 @@ export async function GET() {
 
     const data = await response.json();
 
-    return NextResponse.json({
-      quote: data.quote,
-      author: data.author,
-    });
+    return NextResponse.json(pickLocalQuote(data.id || data.quote.length));
   } catch (error) {
-    return NextResponse.json({
-      quote: "Paso a paso tambien se termina una practica grande.",
-      author: "NexoTask",
-    });
+    return NextResponse.json(fallbackQuote);
   }
 }

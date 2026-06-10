@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { db } from "../../db";
 import { tasks } from "../../db/schema";
 import { auth } from "../../lib/auth";
+import { fallbackQuote, pickLocalQuote } from "../../lib/quotes";
 import TaskBoard from "./TaskBoard";
 
 async function getQuote() {
@@ -17,15 +18,9 @@ async function getQuote() {
     }
 
     const data = await response.json();
-    return {
-      quote: data.quote,
-      author: data.author,
-    };
+    return pickLocalQuote(data.id || data.quote.length);
   } catch (error) {
-    return {
-      quote: "Paso a paso tambien se termina una practica grande.",
-      author: "NexoTask",
-    };
+    return fallbackQuote;
   }
 }
 
