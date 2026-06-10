@@ -24,7 +24,7 @@ export default function LoginPage() {
     });
 
     if (!respuesta.ok) {
-      setMensaje("No se ha podido iniciar sesión.");
+      setMensaje("No se ha podido iniciar sesión. Si la cuenta era anterior al último despliegue, vuelve a registrarte.");
       return;
     }
 
