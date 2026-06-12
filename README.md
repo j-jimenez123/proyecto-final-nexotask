@@ -85,6 +85,10 @@ Para probar la aplicación desde cero:
 
 No se incluye un usuario demo fijo. Cada persona que pruebe el proyecto puede crear su propia cuenta desde la página de registro.
 
+Si se prueba la versión desplegada en Vercel, conviene crear una cuenta nueva para la demo. En este proyecto he mantenido SQLite como base de datos porque era uno de los requisitos técnicos, pero en Vercel la base se guarda de forma temporal en `/tmp/nexotask.db` cuando no se configura una base externa. Esto significa que los usuarios y tareas creados en la demo pueden desaparecer si Vercel reinicia la función o si se hace un nuevo despliegue.
+
+Para una entrega académica sirve para enseñar el funcionamiento completo de registro, login y tareas. En una versión real de producción usaría una base persistente compatible con SQLite, como Turso/libSQL, para que las cuentas y las tareas no se perdieran.
+
 ## Rutas principales
 
 - `/` página de inicio.
