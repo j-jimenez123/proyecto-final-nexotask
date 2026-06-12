@@ -1117,8 +1117,10 @@ export default function TaskBoard({ user, initialTasks, initialQuote }) {
               <article className={styles.closedBanner}>
                 <div className={styles.closedContent}>
                   <span className={styles.closedIcon}>+</span>
-                  <h3>ORGANIZA TU DÍA</h3>
-                  <strong>ORGANIZA TU VIDA</strong>
+                  <div className={styles.closedTitle}>
+                    <h3>Organiza tu día</h3>
+                    <strong>Organiza tu vida</strong>
+                  </div>
                   <p>
                     Revisa lo importante, crea una tarea nueva o abre tu bandeja
                     cuando quieras entrar en modo trabajo.
