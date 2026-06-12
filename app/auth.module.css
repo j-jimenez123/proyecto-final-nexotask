@@ -899,16 +899,78 @@
 
 @media (max-width: 680px) {
   .page {
-    padding: 16px;
+    padding: 18px 16px 28px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .loginPage {
+    min-height: 100vh;
+    place-items: stretch;
+    align-content: start;
+    gap: 18px;
+    padding-top: 18px;
+  }
+
+  .loginHeader {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .loginLogo {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 3px 12px;
+  }
+
+  .loginLogo span {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+  }
+
+  .loginLogo strong {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  .loginLogo small {
+    font-size: 12px;
+  }
+
+  .loginLogo::after {
+    width: min(230px, 62vw);
+    height: 5px;
   }
 
   .panel {
+    width: 100%;
     padding: 24px;
     border-radius: 22px;
   }
 
+  .loginPanel {
+    align-self: start;
+    order: 2;
+  }
+
   .panel h1 {
+    margin-top: 18px;
     font-size: 29px;
+  }
+
+  .loginDecor {
+    display: none;
+  }
+
+  .loginVisual {
+    width: 100%;
+    order: 3;
   }
 
   .videoCard {
